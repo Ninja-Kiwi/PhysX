@@ -45,12 +45,12 @@ ELSE()
 	SET(PHYSX_CXX_FLAGS "/arch:SSE2 /d2Zi+ /MP /WX /W4 /GF /GS- /GR- /Gd ${PHYSX_FP_MODE} /Oy ${PHYSX_WARNING_DISABLES}" CACHE INTERNAL "PhysX CXX")
 ENDIF()
 
-SET(PHYSX_CXX_FLAGS_DEBUG "/Od ${WINCRT_DEBUG} /RTCu /Zi" CACHE INTERNAL "PhysX Debug CXX Flags")
+SET(PHYSX_CXX_FLAGS_DEBUG "/Od ${WINCRT_DEBUG} /RTCu /Zi /FC" CACHE INTERNAL "PhysX Debug CXX Flags")
 # PT: changed /Ox to /O2 because "the /Ox compiler option enables only a subset of the speed optimization options enabled by /O2."
 # See https://docs.microsoft.com/en-us/cpp/build/reference/ox-full-optimization?view=vs-2019
-SET(PHYSX_CXX_FLAGS_CHECKED "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Checked CXX Flags")
-SET(PHYSX_CXX_FLAGS_PROFILE "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Profile CXX Flags")
-SET(PHYSX_CXX_FLAGS_RELEASE "/O2 ${WINCRT_NDEBUG} /Zi" CACHE INTERNAL "PhysX Release CXX Flags")
+SET(PHYSX_CXX_FLAGS_CHECKED "/O2 ${WINCRT_NDEBUG} /Zi /FC" CACHE INTERNAL "PhysX Checked CXX Flags")
+SET(PHYSX_CXX_FLAGS_PROFILE "/O2 ${WINCRT_NDEBUG} /Zi /FC" CACHE INTERNAL "PhysX Profile CXX Flags")
+SET(PHYSX_CXX_FLAGS_RELEASE "/O2 ${WINCRT_NDEBUG} /Zi /FC" CACHE INTERNAL "PhysX Release CXX Flags")
 
 IF(PUBLIC_RELEASE)
 	SET(PUBLIC_RELEASE_FLAG "PX_PUBLIC_RELEASE=1")
