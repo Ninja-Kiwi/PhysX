@@ -3694,13 +3694,13 @@ void Sc::Scene::wakeObjectsUp(PxU32 infoFlag)
 
 void Sc::Scene::postIslandGen(PxBaseTask* continuationTask)
 {
-	PX_PROFILE_ZONE("Sim.postIslandGen", getContextId());
+    PX_PROFILE_ZONE("Sim.postIslandGen", getContextId());
 
-	mSetEdgesConnectedTask.setContinuation(continuationTask);
-	mSetEdgesConnectedTask.removeReference();
+    mSetEdgesConnectedTask.setContinuation(continuationTask);
 
-	// - Performs collision detection for trigger interactions
-	mNPhaseCore->processTriggerInteractions(continuationTask);
+    // - Performs collision detection for trigger interactions
+    mNPhaseCore->processTriggerInteractions(&mSetEdgesConnectedTask);
+    mSetEdgesConnectedTask.removeReference();
 }
 
 void Sc::Scene::solver(PxBaseTask* continuation)
